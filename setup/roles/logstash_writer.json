@@ -9,7 +9,9 @@
       "names": [
         "logs-generic-default",
         "logstash-*",
-        "ecs-logstash-*"
+        "ecs-logstash-*",
+        "general-log",
+        "chat-history"
       ],
       "privileges": [
         "write",

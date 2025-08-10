@@ -1,28 +1,6 @@
 # Elastic stack (ELK) on Docker
 ## Original repo: [https://github.com/deviantony/docker-elk](https://github.com/deviantony/docker-elk)
 
-## Usage
-1. Clone this repository.
-    ```bash
-    git clone https://github.com/alchemine/docker-elk.git
-    ```
-2. Update the version of `docker compose`.
-    - https://docs.docker.com/compose/install/linux/#update-docker-compose
-3. Initialize the Elasticsearch users and groups.
-    ```bash
-    docker compose up setup
-    ```
-4. Optionally but highly recommended, generate encryption keys for Kibana.
-    ```bash
-    docker compose up kibana-genkeys
-    # Copy its output to the Kibana configuration file (kibana/config/kibana.yml)
-    ```
-5. Start the other stack components.
-    ```bash
-    docker compose up
-    ```
-
-
 ## Customization
 1. Add logstash pipelines
     - `general-log`
@@ -45,7 +23,7 @@
 
 ### logstash
 1. Add pipelines
-    - [/logstash/config/pipeline.yml](/logstash/config/pipeline.yml)
+    - [/logstash/config/pipeline.yml]
         - Before
             ```yml
             ```
@@ -63,7 +41,7 @@
             queue.type: persisted
             path.config: pipeline/chat-history.conf
             ```
-    - [/logstash/pipeline/general-log.conf](/logstash/pipeline/general-log.conf)
+    - [/logstash/pipeline/general-log.conf]
         - Before
             ```conf
             ```
@@ -95,7 +73,7 @@
                 }
             }
             ```
-    - [/logstash/pipeline/chat-history.conf](/logstash/pipeline/chat-history.conf)
+    - [/logstash/pipeline/chat-history.conf]
         - Before
             ```conf
             ```
@@ -127,9 +105,6 @@
                 }
             }
             ```
-
-2. Remove template
-    - `/logstash/pipeline/logstash.conf`
 
 
 ### setup
@@ -264,12 +239,3 @@
                 - elasticsearch
                 restart: unless-stopped
             ```
-
-
-## Troubleshooting
-```
-✘ Container docker-elk-elasticsearch-1  Error response from daemon: No such image: docker-elk-elasticsearch:latest
-```
-Updating Docker Compose
-- [https://docs.docker.com/compose/install/linux/#update-docker-compose](https://docs.docker.com/compose/install/linux/#update-docker-compose)
-- [https://github.com/deviantony/docker-elk/issues/1077](https://github.com/deviantony/docker-elk/issues/1077)
